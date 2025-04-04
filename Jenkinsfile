@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PATH = "C:\\Program Files\\nodejs;${env.PATH}"
+        PATH = "C:/Program Files/nodejs/;${env.PATH}"
     }
     stages {
         stage('checkout') {
@@ -11,22 +11,22 @@ pipeline {
         }
         stage('install') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
         stage('build') {
             steps {
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
         stage('test') {
             steps {
-                sh 'npm run test'
+                bat 'npm run test'
             }
         }
         stage('build image') {
             steps {
-                sh 'docker build -t nestjs-server:1.0 .'
+                bat 'docker build -t nestjs-server:1.0 .'
             }
         }
         stage('docker push') {
