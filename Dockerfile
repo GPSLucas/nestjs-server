@@ -13,7 +13,11 @@ RUN npm install --only=production
 RUN npm install
 
 # Copia o restante dos arquivos do projeto
+COPY ./src ./src
+COPY tsconfig.json ./
 COPY . .
+
+COPY prisma ./prisma
 
 # Compila o código (caso use TypeScript)
 RUN npm run build
