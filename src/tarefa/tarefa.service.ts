@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { Tarefa } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateTarefaDto } from './dto/create-tarefa.dto';
 
@@ -7,15 +6,15 @@ import { CreateTarefaDto } from './dto/create-tarefa.dto';
 export class TarefaService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async findAll(): Promise<Tarefa[]> {
+  async findAll() {
     return this.prisma.tarefa.findMany({ orderBy: { created_at: 'desc' } });
   }
 
-  async create(data: CreateTarefaDto): Promise<Tarefa> {
+  async create(data: CreateTarefaDto) {
     return this.prisma.tarefa.create({ data });
   }
 
-  async delete(id: number): Promise<Tarefa> {
+  async delete(id: number) {
     return this.prisma.tarefa.delete({ where: { id } });
   }
 }

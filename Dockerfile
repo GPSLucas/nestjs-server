@@ -16,7 +16,6 @@ RUN npm install
 COPY ./src ./src
 COPY tsconfig.json ./
 COPY . .
-
 COPY prisma ./prisma
 
 # Compila o código (caso use TypeScript)
