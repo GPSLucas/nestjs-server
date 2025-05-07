@@ -11,18 +11,27 @@ services:
       MYSQL_PASSWORD: pass
     ports:
       - "3307:3306"
+    networks:
+      - mysql-net
     volumes:
       - db_data:/var/lib/mysql
+
 
   nestjs:
     image: lucaspscheidtunc/nestjs-server:1.0
     restart: always
     ports:
       - "3000:3000"
+    networks:
+      - mysql-net
     depends_on:
       - db
     env_file:
       - .env
+
+networks:
+  mysql-net:
+    external: true
 
 volumes:
   db_data:
