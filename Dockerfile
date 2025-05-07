@@ -15,9 +15,6 @@ RUN npm install
 # Copia o restante dos arquivos do projeto
 COPY . .
 
-COPY prisma ./prisma/
-RUN npx prisma generate && npm prisma db push
-
 # Compila o código (caso use TypeScript)
 RUN npm run build
 
@@ -25,4 +22,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Comando para iniciar a aplicação
-CMD ["npm", "run", "start:prod"]
+CMD ["sh", "-c", "npx prisma generate && npx prisma db push && npm run start:prod"]
