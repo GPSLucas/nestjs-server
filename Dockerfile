@@ -16,7 +16,7 @@ RUN npm install
 COPY . .
 
 COPY prisma ./prisma/
-RUN npx prisma generate
+RUN npx prisma generate && npm prisma db push
 
 # Compila o código (caso use TypeScript)
 RUN npm run build
