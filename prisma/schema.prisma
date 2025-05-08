@@ -18,3 +18,9 @@ model Tarefa {
   title      String
   created_at DateTime @default(now())
 }
+
+model test {
+  id         Int      @id @default(autoincrement())
+  title      String
+  created_at DateTime @default(now())
+}
